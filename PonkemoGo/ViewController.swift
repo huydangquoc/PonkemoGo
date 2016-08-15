@@ -41,10 +41,11 @@ class ViewController: UIViewController {
     @IBAction func tapNotify(sender: AnyObject) {
         
         let notification = UILocalNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: 10)
+        notification.fireDate = NSDate(timeIntervalSinceNow: 3)
         notification.alertBody = "\(pokemonNames[selectedIndex]) is nearby"
         notification.alertAction = "gotta catch them all!"
         notification.userInfo = ["SelectedPokemon": pokemonNames[selectedIndex]]
+        notification.category = "CatchPokemonCategory"
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     

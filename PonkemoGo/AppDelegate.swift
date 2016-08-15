@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+        registerNotification()
+        
         if let options = launchOptions {
             // check for local notification
             if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
@@ -42,6 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // launch detail page with selected pokemon
             openPokemonCatchView(selectedPokemon)
         }
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        // Handle notification action *****************************************
+        if notification.category == "CatchPokemonCategory" {
+            if let action = identifier {
+                if action == "CatchPokemonAction" {
+                    if let userInfo = notification.userInfo {
+                        let selectedPokemon = userInfo["SelectedPokemon"] as! String
+                        openPokemonCatchView(selectedPokemon)
+                    }
+                } else if action == "IgnoreAction" {
+                    // do nothing
+                    // alert will automatically dismissed???
+                }
+            }
+        }
+        
+        completionHandler()
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -73,5 +95,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pokemonCatchVC.pokemonName = pokemonName
         window?.rootViewController = pokemonCatchVC
         window?.makeKeyAndVisible()
+    }
+    
+    // Register notification settings
+    func registerNotification() {
+        
+        // 1. Create the actions **************************************************
+        // catch action
+        let catchAction = UIMutableUserNotificationAction()
+        catchAction.identifier = "CatchPokemonAction"
+        catchAction.title = "Catch Pokemon"
+        catchAction.activationMode = UIUserNotificationActivationMode.Foreground
+        catchAction.destructive = false
+        // ignore Action
+        let ignoreAction = UIMutableUserNotificationAction()
+        ignoreAction.identifier = "IgnoreAction"
+        ignoreAction.title = "IGNORE"
+        ignoreAction.activationMode = UIUserNotificationActivationMode.Background
+        ignoreAction.authenticationRequired = true
+        ignoreAction.destructive = true
+        
+        // 2. Create the category ***********************************************
+        // Category
+        let catchPokemonCategory = UIMutableUserNotificationCategory()
+        catchPokemonCategory.identifier = "CatchPokemonCategory"
+        // A. Set actions for the default context
+        catchPokemonCategory.setActions([ignoreAction, catchAction], forContext: UIUserNotificationActionContext.Default)
+        // B. Set actions for the minimal context
+        catchPokemonCategory.setActions([ignoreAction, catchAction], forContext: UIUserNotificationActionContext.Minimal)
+        
+        // 3. Notification Registration *****************************************
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: Set(arrayLiteral: catchPokemonCategory))
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
     }
 }
