@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B2973F71D616EAA00057144 /* PokemonCatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2973F61D616EAA00057144 /* PokemonCatchViewController.swift */; };
 		6B6C0C321D5E030E00293C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6C0C311D5E030E00293C13 /* AppDelegate.swift */; };
 		6B6C0C341D5E030E00293C13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6C0C331D5E030E00293C13 /* ViewController.swift */; };
 		6B6C0C371D5E030E00293C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B6C0C351D5E030E00293C13 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B2973F61D616EAA00057144 /* PokemonCatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCatchViewController.swift; sourceTree = "<group>"; };
 		6B6C0C2E1D5E030E00293C13 /* PonkemoGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PonkemoGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B6C0C311D5E030E00293C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B6C0C331D5E030E00293C13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B2973F41D616E3F00057144 /* UIs */ = {
+			isa = PBXGroup;
+			children = (
+				6B6C0C351D5E030E00293C13 /* Main.storyboard */,
+				6B6C0C3A1D5E030E00293C13 /* LaunchScreen.storyboard */,
+			);
+			name = UIs;
+			sourceTree = "<group>";
+		};
+		6B2973F51D616E5000057144 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B6C0C331D5E030E00293C13 /* ViewController.swift */,
+				6B2973F61D616EAA00057144 /* PokemonCatchViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		6B6C0C251D5E030E00293C13 = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +74,10 @@
 		6B6C0C301D5E030E00293C13 /* PonkemoGo */ = {
 			isa = PBXGroup;
 			children = (
+				6B2973F41D616E3F00057144 /* UIs */,
+				6B2973F51D616E5000057144 /* View Controllers */,
 				6B6C0C311D5E030E00293C13 /* AppDelegate.swift */,
-				6B6C0C331D5E030E00293C13 /* ViewController.swift */,
-				6B6C0C351D5E030E00293C13 /* Main.storyboard */,
 				6B6C0C381D5E030E00293C13 /* Assets.xcassets */,
-				6B6C0C3A1D5E030E00293C13 /* LaunchScreen.storyboard */,
 				6B6C0C3D1D5E030E00293C13 /* Info.plist */,
 			);
 			path = PonkemoGo;
@@ -137,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B6C0C341D5E030E00293C13 /* ViewController.swift in Sources */,
+				6B2973F71D616EAA00057144 /* PokemonCatchViewController.swift in Sources */,
 				6B6C0C321D5E030E00293C13 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +307,7 @@
 				6B6C0C421D5E030E00293C13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

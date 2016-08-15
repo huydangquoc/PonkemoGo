@@ -82,10 +82,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Pokemon Catch View Controller-->
+        <scene sceneID="ABL-DZ-gua">
+            <objects>
+                <viewController storyboardIdentifier="PokemonCatchViewController" id="zib-6e-WQw" customClass="PokemonCatchViewController" customModule="PonkemoGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xe8-7r-Kc1"/>
+                        <viewControllerLayoutGuide type="bottom" id="yr3-cn-qqb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C5f-Zw-QOP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pikachu" translatesAutoresizingMaskIntoConstraints="NO" id="0mO-Mp-cIr">
+                                <rect key="frame" x="240" y="40" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="8HS-Zr-N0a"/>
+                                    <constraint firstAttribute="width" constant="120" id="jg8-ej-snS"/>
+                                </constraints>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PokeBall" translatesAutoresizingMaskIntoConstraints="NO" id="1PC-qV-Od6">
+                                <rect key="frame" x="270" y="510" width="60" height="60"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EMh-4f-FKW"/>
+                                    <constraint firstAttribute="width" constant="60" id="SFm-BU-yUh"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Cqq-cC-Vvf" appends="YES" id="KA9-ty-0HH"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0mO-Mp-cIr" firstAttribute="centerX" secondItem="C5f-Zw-QOP" secondAttribute="centerX" id="Fe4-dR-ChR"/>
+                            <constraint firstItem="1PC-qV-Od6" firstAttribute="centerX" secondItem="C5f-Zw-QOP" secondAttribute="centerX" id="WuR-aT-z4Y"/>
+                            <constraint firstItem="0mO-Mp-cIr" firstAttribute="top" secondItem="xe8-7r-Kc1" secondAttribute="bottom" constant="20" id="ZO8-j0-sAc"/>
+                            <constraint firstItem="yr3-cn-qqb" firstAttribute="top" secondItem="1PC-qV-Od6" secondAttribute="bottom" constant="30" id="ui4-s5-Nrm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pokeBallView" destination="1PC-qV-Od6" id="0kQ-ma-uBx"/>
+                        <outlet property="pokemonView" destination="0mO-Mp-cIr" id="V84-WB-5N8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMA-RL-xdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Cqq-cC-Vvf" userLabel="PokeBall Pan Gesture">
+                    <connections>
+                        <action selector="onPokeBallPan:" destination="zib-6e-WQw" id="slX-7z-Ha9"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="405" y="1080"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Dragon" width="908" height="1183"/>
         <image name="KhungLong" width="1354" height="1500"/>
         <image name="Pikachu" width="1191" height="1254"/>
+        <image name="PokeBall" width="766" height="766"/>
     </resources>
 </document>

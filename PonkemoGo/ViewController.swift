@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pokemon3Button: UIButton!
     
     var pokemons: [UIButton] = []
-    var pokemonNames = ["Pikachu", "Dragon", "Dinosaur"]
+    var pokemonNames = ["Pikachu", "Dragon", "KhungLong"]
     var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         let notification = UILocalNotification()
         notification.fireDate = NSDate(timeIntervalSinceNow: 10)
         notification.alertBody = "\(pokemonNames[selectedIndex]) is nearby"
+        notification.alertAction = "gotta catch them all!"
         notification.userInfo = ["SelectedPokemon": pokemonNames[selectedIndex]]
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }

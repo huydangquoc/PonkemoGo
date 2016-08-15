@@ -19,9 +19,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+        if let options = launchOptions {
+            // check for local notification
+            if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+                // check user info
+                if let userInfo = notification.userInfo {
+                    let selectedPokemon = userInfo["SelectedPokemon"] as! String
+                    // launch detail page with selected pokemon
+                    openPokemonCatchView(selectedPokemon)
+                }
+            }
+        }
+        
         return true
     }
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        // check user info
+        if let userInfo = notification.userInfo {
+            let selectedPokemon = userInfo["SelectedPokemon"] as! String
+            // launch detail page with selected pokemon
+            openPokemonCatchView(selectedPokemon)
+        }
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -43,7 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func openPokemonCatchView(pokemonName: String) {
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let pokemonCatchVC = storyboard.instantiateViewControllerWithIdentifier("PokemonCatchViewController") as! PokemonCatchViewController
+        pokemonCatchVC.pokemonName = pokemonName
+        window?.rootViewController = pokemonCatchVC
+        window?.makeKeyAndVisible()
+    }
 }
-
