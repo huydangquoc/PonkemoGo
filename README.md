@@ -22,11 +22,11 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [] Implement "simulated" Push Notifications
+- [ ] Implement "simulated" Push Notifications
      use [SimulatorRemoteNotifications](https://github.com/acoomans/SimulatorRemoteNotifications)
-- [] Throw the Pokeball at the Pokemon.
+- [ ] Throw the Pokeball at the Pokemon.
      use UIKitDynamics to "fling" the Poke-Ball at the Pokemon
-- [] Keep track of Pokemon and Pokeballs.
+- [ ] Keep track of Pokemon and Pokeballs.
      Use Realm to keep track (locally) of how many Pokemon you have caught
 	 Use Realm to keep track of how many Pokeballs you have remaining
 
