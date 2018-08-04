@@ -23,32 +23,32 @@ class PokemonCatchViewController: UIViewController {
         pokemonView.image = UIImage(named: pokemonName)
     }
     
-    @IBAction func onPokeBallPan(sender: UIPanGestureRecognizer) {
+    @IBAction func onPokeBallPan(_ sender: UIPanGestureRecognizer) {
         
         switch sender.state {
-        case .Began:
+        case .began:
             // keep original point for later calculation
             ballOriginalCenter = pokeBallView.center
             
-        case .Changed:
-            let translation = sender.translationInView(view)
+        case .changed:
+            let translation = sender.translation(in: view)
             pokeBallView.center = CGPoint(x: ballOriginalCenter.x + translation.x,
                                               y: ballOriginalCenter.y + translation.y)
             
-        case .Ended:
-            if CGRectIntersectsRect(pokeBallView.frame, pokemonView.frame) {
+        case .ended:
+            if pokeBallView.frame.intersects(pokemonView.frame) {
                 // alert gotcha
-                let alert = UIAlertController(title: "PonkemonGo", message: "GOTCHA!!! WELLDONE!!!", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: {(action) in
+                let alert = UIAlertController(title: "PonkemonGo", message: "GOTCHA!!! WELLDONE!!!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {(action) in
                     // move back to original place
-                    UIView.animateWithDuration(0.6, animations: {
+                    UIView.animate(withDuration: 0.6, animations: {
                         self.pokeBallView.center = self.ballOriginalCenter
                         }, completion: nil)
                 }))
-                presentViewController(alert, animated: true, completion:nil)
+                present(alert, animated: true, completion:nil)
             } else {
                 // move back to original place
-                UIView.animateWithDuration(0.6, animations: {
+                UIView.animate(withDuration: 0.6, animations: {
                     self.pokeBallView.center = self.ballOriginalCenter
                     }, completion: nil)
             }

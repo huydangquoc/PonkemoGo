@@ -26,9 +26,9 @@ class ViewController: UIViewController {
         pokemons.append(pokemon3Button)
     }
 
-    @IBAction func onSelectPokemon(sender: UIButton) {
+    @IBAction func onSelectPokemon(_ sender: UIButton) {
         
-        for (index, button) in pokemons.enumerate() {
+        for (index, button) in pokemons.enumerated() {
             if sender == button {
                 selectedIndex = index
                 activeBoder(button)
@@ -38,24 +38,24 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func tapNotify(sender: AnyObject) {
+    @IBAction func tapNotify(_ sender: AnyObject) {
         
         let notification = UILocalNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: 3)
+        notification.fireDate = Date(timeIntervalSinceNow: 3)
         notification.alertBody = "\(pokemonNames[selectedIndex]) is nearby"
         notification.alertAction = "gotta catch them all!"
         notification.userInfo = ["SelectedPokemon": pokemonNames[selectedIndex]]
         notification.category = "CatchPokemonCategory"
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        UIApplication.shared.scheduleLocalNotification(notification)
     }
     
-    func activeBoder(button: UIButton) {
+    func activeBoder(_ button: UIButton) {
         
-        button.layer.borderColor = UIColor.blueColor().CGColor
+        button.layer.borderColor = UIColor.blue.cgColor
         button.layer.borderWidth = 1
     }
     
-    func inactiveBoder(button: UIButton) {
+    func inactiveBoder(_ button: UIButton) {
         
         button.layer.borderWidth = 0
     }
